@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<patients>
+    <patient id="1">
+        <name>Taha</name>
+        <surnaname>Duran</surnaname>
+        <gender>male</gender>
+        <age>28</age>
+        <address>St.Patrick Street</address>
+        <phoneNumber>0893452176</phoneNumber>
+        <relatives>sibling</relatives>
+
+    </patient>
+    <patient id="2">
+    <name>Efe</name>
+    <surnaname>Ersan</surnaname>
+    <gender>male</gender>
+    <age>29</age>
+    <address>St.Patrick Street</address>
+    <phoneNumber>0893452170</phoneNumber>
+    <relatives>parents</relatives>
+    </patient>
+
+</patients>
