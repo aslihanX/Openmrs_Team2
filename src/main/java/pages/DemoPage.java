@@ -20,7 +20,7 @@ public class DemoPage extends BasePage {
     }
 
     public void verifyDemoPage(){
-        verifyDisplayed(demoPageText, "Demo Page is not displayed");
+        verifyDisplayed(demoPageText, "Demo");
         LOGGER.info("Verify demo page open");
     }
 

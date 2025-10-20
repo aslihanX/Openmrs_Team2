@@ -21,15 +21,12 @@ public class LoginPage extends BasePage {
     @FindBy(id = "loginButton")
     private WebElement loginButton;
 
-    @FindBy(css = "#navbarSupportedContent > ul > li.identifier")
-    private WebElement adminText;
-
     public LoginPage(final WebDriver driver) {
         super(driver);
     }
 
     public void verifyLoginPage() {
-        verifyDisplayed(loginForm, "Login page is not displayed");
+        verifyDisplayed(loginForm, "LOGIN");
         LOGGER.info("Verify login page is displayed");
     }
 
@@ -48,10 +45,5 @@ public class LoginPage extends BasePage {
     public void clickLoginButton() {
         clickElement(loginButton);
         LOGGER.info("Login button clicked");
-    }
-
-    public void verifyAdminLogin() {
-        verifyDisplayed(adminText, "Login failed");
-        LOGGER.info("Login successful");
     }
 }

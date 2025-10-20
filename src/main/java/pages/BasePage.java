@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -37,7 +38,7 @@ public class BasePage {
                         .click()
                         .perform();
                 LOGGER.debug("Element clicked with Actions");
-            } catch (Exception e2){
+            } catch (Exception e2) {
                 try {
                     ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
                     LOGGER.debug("Element clicked with Javascript");
@@ -77,5 +78,36 @@ public class BasePage {
 
     public void verifyDisplayed(final WebElement element, final String text) {
         Assert.assertTrue(element.isDisplayed(), text);
+    }
+
+    public void selectFromDropdownByVisibleText(final WebElement element, final String visibleText) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        try {
+            new Select(element).selectByVisibleText(visibleText);
+            LOGGER.debug("Option selected by visible text");
+        } catch (Exception e1) {
+            try {
+                new Actions(driver)
+                        .moveToElement(element)
+                        .click()
+                        .perform();
+                new Select(element).selectByVisibleText(visibleText);
+                LOGGER.debug("Option selected with Actions");
+            } catch (Exception e2) {
+                try {
+                    ((JavascriptExecutor) driver)
+                            .executeScript(
+                                    "for (let i = 0; i < arguments[0].options.length; i++) {" +
+                                            " if (arguments[0].options[i].text === arguments[1]) {" +
+                                            " arguments[0].selectedIndex = i;" +
+                                            " arguments[0].dispatchEvent(new Event('change'));" +
+                                            " break; } }",
+                                    element, visibleText);
+                    LOGGER.debug("Option selected with Javascript");
+                } catch (Exception e3) {
+                    throw new RuntimeException("All dropdown selection operations failed.");
+                }
+            }
+        }
     }
 }
