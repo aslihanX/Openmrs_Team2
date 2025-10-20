@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class RegisterPage extends BasePage {
 
-    @FindBy(css = "h2")
+    @FindBy(css = "#content > h2")
     private WebElement registerPatientHeader;
 
     @FindBy(name = "givenName")
@@ -15,17 +15,14 @@ public class RegisterPage extends BasePage {
     @FindBy(name = "familyName")
     private WebElement lastNameInput;
 
+    @FindBy(css = "#next-button > icon")
+    private WebElement nextButton;
+
     @FindBy(id = "gender-field")
     private WebElement genderSelect;
 
-    @FindBy(id = "birthdateDay-field")
-    private WebElement birthDayInput;
-
-    @FindBy(id = "birthdateMonth-field")
-    private WebElement birthMonthSelect;
-
-    @FindBy(id = "birthdateYear-field")
-    private WebElement birthYearInput;
+    @FindBy(id = "birthdateYears-field")
+    private WebElement ageInput;
 
     @FindBy(id = "address1")
     private WebElement addressInput;
@@ -36,20 +33,8 @@ public class RegisterPage extends BasePage {
     @FindBy(id = "relationship_type")
     private WebElement relationshipSelect;
 
-    @FindBy(css = "input[id*='person']")
-    private WebElement relationshipNameInput;
-
-    @FindBy(id = "confirmation_label")
+    @FindBy(id = "submit")
     private WebElement confirmButton;
-
-    @FindBy(css = "#coreapps-diagnosesList > div.info-header > h3")
-    private WebElement patientDiagnoses;
-
-    @FindBy(css = "span.PersonName-givenName")
-    private WebElement patientName;
-
-    @FindBy(css = "span.patient-id")
-    private WebElement patientId;
 
     public RegisterPage(WebDriver driver) {
         super(driver);
@@ -60,47 +45,45 @@ public class RegisterPage extends BasePage {
         LOGGER.info("Verify Register Patient page is displayed");
     }
 
-    public void enterDemographics(final String firstName, final String lastName, final String gender,
-                                  final String day, final String month, final String year) {
+    public void enterName(final String firstName, final String lastName) {
         sendKeysToElement(firstNameInput, firstName);
         LOGGER.info("First name entered");
         sendKeysToElement(lastNameInput, lastName);
         LOGGER.info("Last name entered");
+    }
+
+    public void clickNext(){
+        clickElement(nextButton);
+        LOGGER.info("Next button clicked");
+    }
+
+    public void selectGender(final String gender) {
         selectFromDropdownByVisibleText(genderSelect, gender);
         LOGGER.info("Gender selected");
-        sendKeysToElement(birthDayInput, day);
-        sendKeysToElement(birthMonthSelect, month);
-        sendKeysToElement(birthYearInput, year);
+    }
+
+    public void enterAge(final String age) {
+        sendKeysToElement(ageInput, age);
         LOGGER.info("Birthdate entered");
     }
 
-    public void enterContactInfo(final String address, final String phone) {
+    public void enterAddress(final String address) {
         sendKeysToElement(addressInput, address);
         LOGGER.info("Address entered");
+    }
+
+    public void enterPhoneNumber(final String phone) {
         sendKeysToElement(phoneInput, phone);
         LOGGER.info("Phone number entered");
     }
 
-    public void enterRelationship(final String relationship) {
+    public void selectRelationship(final String relationship) {
         selectFromDropdownByVisibleText(relationshipSelect, relationship);
         LOGGER.info("Relationship type selected");
-        sendKeysToElement(relationshipNameInput, "Relative Name");
-        LOGGER.info("Relationship name entered");
     }
 
     public void clickConfirmButton() {
         clickElement(confirmButton);
         LOGGER.info("Confirm button clicked");
-    }
-
-    public void verifyPatientPage() {
-        verifyDisplayed(patientDiagnoses, "DIAGNOSES");
-        LOGGER.info("Verify patient page is displayed");
-    }
-
-    public void verifyPatientNameAndIdDisplayed() {
-        verifyDisplayed(patientName, patientName.getText());
-        verifyDisplayed(patientId, patientId.getText());
-        LOGGER.info("Patient name and ID are displayed successfully");
     }
 }

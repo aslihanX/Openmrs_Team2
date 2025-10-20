@@ -1,3 +1,4 @@
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.DemoPage;
@@ -64,13 +65,5 @@ public class TC402_Login extends BaseGUITest {
     public void adminLogin() {
         menuPage.verifyAdminLogin();
         LOGGER.info("Login successful");
-    }
-
-    public void login() {
-        verifyHomePage();
-        openDemoPage();
-        loginPage();
-        adminLogin();
-        LOGGER.info("Login successful (via TC402 login method)");
     }
 }
