@@ -61,5 +61,6 @@ public class TC402_Login extends BaseGUITest {
     public void adminLogin() {
         loginPage.verifyAdminLogin();
         LOGGER.info("Login successful");
+
     }
 }
