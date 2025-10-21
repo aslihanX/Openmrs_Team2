@@ -1,14 +1,17 @@
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.DemoPage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.MenuPage;
 
 public class TC402_Login extends BaseGUITest {
 
     private HomePage homePage;
     private LoginPage loginPage;
     private DemoPage demoPage;
+    private MenuPage menuPage;
 
     private String username = "admin";
     private String password = "Admin123";
@@ -18,6 +21,7 @@ public class TC402_Login extends BaseGUITest {
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
         demoPage = new DemoPage(driver);
+        menuPage = new MenuPage(driver);
     }
 
     @Test(priority = 1, description = "Verify that home page is visible successfully")
@@ -59,8 +63,7 @@ public class TC402_Login extends BaseGUITest {
 
     @Test(priority = 4, description = "Verify successful login")
     public void adminLogin() {
-        loginPage.verifyAdminLogin();
+        menuPage.verifyAdminLogin();
         LOGGER.info("Login successful");
-
     }
 }

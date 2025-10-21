@@ -17,7 +17,7 @@ public class HomePage extends BasePage {
     }
 
     public void verifyPage() {
-        verifyDisplayed(homePageText, "Home page is not displayed");
+        verifyDisplayed(homePageText, "OpenMRS");
         LOGGER.info("Verify home page is displayed");
     }
 
