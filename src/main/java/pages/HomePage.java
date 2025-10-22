@@ -12,6 +12,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "a[class='zak-button']")
     private WebElement demoButton;
 
+    @FindBy(css = "a[href*='home.page']")
+    private WebElement homeButton;
+
     public HomePage(final WebDriver driver){
        super(driver);
     }
@@ -24,5 +27,10 @@ public class HomePage extends BasePage {
     public void clickDemoButton() {
         clickElement(demoButton);
         LOGGER.info("Demo button clicked");
+    }
+
+    public void navigateHome() {
+        clickElement(homeButton);
+        LOGGER.info("Navigated back to the homepage");
     }
 }
