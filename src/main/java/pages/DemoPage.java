@@ -9,7 +9,7 @@ public class DemoPage extends BasePage {
     @FindBy(css = ".zak-page-header__title > .zak-page-title")
     private WebElement demoPageText;
 
-    @FindBy(css = "a[href='#openmrs2'] > span[class='elementor-button-content-wrapper']" )
+    @FindBy(css = "a[href='#openmrs3'] > span[class='elementor-button-content-wrapper']" )
     private WebElement exploreButton;
 
     @FindBy(css = "div[data-id='255a6bc'] > div > div > a > span[class='elementor-button-content-wrapper']")
