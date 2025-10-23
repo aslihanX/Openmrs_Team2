@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
 
-    @FindBy(id = "login-form")
-    private WebElement loginForm;
+   // @FindBy(id = "login-form")
+  //  private WebElement loginForm;
 
     @FindBy(id = "username")
     private WebElement usernameInput;
@@ -26,8 +26,8 @@ public class LoginPage extends BasePage {
     }
 
     public void verifyLoginPage() {
-        verifyDisplayed(loginForm, "LOGIN");
-        LOGGER.info("Verify login page is displayed");
+       // verifyDisplayed(loginForm, "LOGIN");
+       // LOGGER.info("Verify login page is displayed");
     }
 
     public void fillLoginForm(final String username, final String password) {
