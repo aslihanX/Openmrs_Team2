@@ -12,7 +12,7 @@ public class DemoPage extends BasePage {
     @FindBy(css = "a[href='#openmrs3'] > span[class='elementor-button-content-wrapper']" )
     private WebElement exploreButton;
 
-    @FindBy(css = "div[data-id='255a6bc'] > div > div > a > span[class='elementor-button-content-wrapper']")
+    @FindBy(css = "#zak-content > div > div > div > section.elementor-section.elementor-top-section.elementor-element.elementor-element-10d1a96.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default > div > div > div > div.elementor-element.elementor-element-1294e92.elementor-align-center.elementor-widget.elementor-widget-button > div > div > a > span > span")
     private WebElement enterDemoButton;
 
     public DemoPage(WebDriver driver) {
