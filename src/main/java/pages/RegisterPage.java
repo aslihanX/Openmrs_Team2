@@ -6,43 +6,34 @@ import org.openqa.selenium.support.FindBy;
 
 public class RegisterPage extends BasePage {
 
-    @FindBy(css = "#content > h2")
-    private WebElement registerPatientHeader;
+    @FindBy(css = "div:nth-child(1) > div > h4")
+    private WebElement createNewPatientHeader;
 
-    @FindBy(name = "givenName")
+    @FindBy(id = "givenName")
     private WebElement firstNameInput;
 
     @FindBy(name = "familyName")
     private WebElement lastNameInput;
 
-    @FindBy(css = "#next-button > icon")
-    private WebElement nextButton;
-
-    @FindBy(id = "gender-field")
+    @FindBy(css = "label[for='gender-option-male'] > span.cds--radio-button__appearance")
     private WebElement genderSelect;
 
-    @FindBy(id = "birthdateYears-field")
-    private WebElement ageInput;
+    @FindBy(xpath = "//div[3]/div[1]/div[2]/button[2]/span")
+    private WebElement birthdayNoClick;
 
-    @FindBy(id = "address1")
-    private WebElement addressInput;
+    @FindBy(id = "monthsEstimated")
+    private WebElement monthsEstimatedInput;
 
-    @FindBy(name = "phoneNumber")
-    private WebElement phoneInput;
-
-    @FindBy(id = "relationship_type")
-    private WebElement relationshipSelect;
-
-    @FindBy(id = "submit")
-    private WebElement confirmButton;
+    @FindBy(css = "button.-esm-patient-registration__patient-registration__submitButton___Ps1do.cds--btn.cds--btn--primary")
+    private WebElement registerButton;
 
     public RegisterPage(WebDriver driver) {
         super(driver);
     }
 
-    public void verifyRegisterPatientPage() {
-        verifyDisplayed(registerPatientHeader, "Register a patient");
-        LOGGER.info("Verify Register Patient page is displayed");
+    public void verifyCreateNewPatientPage() {
+        verifyDisplayed(createNewPatientHeader, "Create new patient");
+        LOGGER.info("Verify Create New Patient page is displayed");
     }
 
     public void enterName(final String firstName, final String lastName) {
@@ -52,38 +43,23 @@ public class RegisterPage extends BasePage {
         LOGGER.info("Last name entered");
     }
 
-    public void clickNext(){
-        clickElement(nextButton);
-        LOGGER.info("Next button clicked");
-    }
-
-    public void selectGender(final String gender) {
-        selectFromDropdownByVisibleText(genderSelect, gender);
+    public void selectGender() {
+        clickElement(genderSelect);
         LOGGER.info("Gender selected");
     }
 
+    public void clickBirthdayNo() {
+        clickElement(birthdayNoClick);
+        LOGGER.info("No selected");
+    }
+
     public void enterAge(final String age) {
-        sendKeysToElement(ageInput, age);
-        LOGGER.info("Birthdate entered");
+        sendKeysToElement(monthsEstimatedInput, age);
+        LOGGER.info("Age entered");
     }
 
-    public void enterAddress(final String address) {
-        sendKeysToElement(addressInput, address);
-        LOGGER.info("Address entered");
-    }
-
-    public void enterPhoneNumber(final String phone) {
-        sendKeysToElement(phoneInput, phone);
-        LOGGER.info("Phone number entered");
-    }
-
-    public void selectRelationship(final String relationship) {
-        selectFromDropdownByVisibleText(relationshipSelect, relationship);
-        LOGGER.info("Relationship type selected");
-    }
-
-    public void clickConfirmButton() {
-        clickElement(confirmButton);
+    public void clickRegisterButton() {
+        clickElement(registerButton);
         LOGGER.info("Confirm button clicked");
     }
 }

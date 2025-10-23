@@ -5,11 +5,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class MenuPage extends BasePage {
 
-    @FindBy(css = "#navbarSupportedContent > ul > li.identifier")
-    private WebElement adminText;
+    @FindBy(css = "div.JGea75oGL3rl8HguRCx48Q\\=\\= > div > p:nth-child(1)")
+    private WebElement clinicText;
 
-    @FindBy(id = "referenceapplication-registrationapp-registerPatient-homepageLink-referenceapplication-registrationapp-registerPatient-homepageLink-extension")
-    private WebElement registerPatientButton;
+    @FindBy(css = "div:nth-child(3) > span > div > button")
+    private WebElement addPatientButton;
 
     @FindBy(id = "coreapps-activeVisitsHomepageLink-coreapps-activeVisitsHomepageLink-extension")
     private WebElement findPatientRecordButton;
@@ -26,13 +26,13 @@ public class MenuPage extends BasePage {
     }
 
     public void verifyAdminLogin() {
-        verifyDisplayed(adminText, "admin");
+        verifyDisplayed(clinicText, "Clinic");
         LOGGER.info("Login successful");
     }
 
-    public void clickRegisterPatientButton(){
-        clickElement(registerPatientButton);
-        LOGGER.info("Register a Patient button clicked");
+    public void clickAddPatientButton(){
+        clickElement(addPatientButton);
+        LOGGER.info("Add Patient button clicked");
     }
 
     public void clickFindPatientRecord() {

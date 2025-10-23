@@ -51,12 +51,8 @@ public class TC402_Login extends BaseGUITest {
         loginPage.verifyLoginPage();
         LOGGER.info("Login page opened");
 
-        loginPage.sendKeysToElement(usernameInput);
-        LOGGER.info("Username entered");
-        loginPage.clickLoginButton();
-
-        loginPage.clickLocationButton();
-        LOGGER.info("Location button clicked");
+        loginPage.fillLoginForm(username, password);
+        LOGGER.info("Username and password entered");
 
         loginPage.clickLoginButton();
         LOGGER.info("Login button clicked");

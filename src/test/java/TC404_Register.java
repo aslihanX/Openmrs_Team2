@@ -41,21 +41,19 @@ public class TC404_Register extends BaseGUITest {
         LOGGER.info("Login page opened");
         loginPage.fillLoginForm(username, password);
         LOGGER.info("Username and password entered");
-        loginPage.clickLocationButton();
-        LOGGER.info("Location button clicked");
         loginPage.clickLoginButton();
         LOGGER.info("Login button clicked");
         menuPage.verifyAdminLogin();
         LOGGER.info("Login successful");
     }
 
-    @Test(priority = 2, description = "Verify that user can open Register a Patient form")
-    public void openRegisterPatientForm() {
-        menuPage.clickRegisterPatientButton();
-        LOGGER.info("Register a Patient button clicked");
+    @Test(priority = 2, description = "Verify that user can open Add Patient page")
+    public void openAddPatientPage() {
+        menuPage.clickAddPatientButton();
+        LOGGER.info("Add Patient button clicked");
 
-        registerPage.verifyRegisterPatientPage();
-        LOGGER.info("Register a Patient form opened");
+        registerPage.verifyCreateNewPatientPage();
+        LOGGER.info("Create New Patient page opened");
     }
 
     @Test(priority = 3, description = "Verify that user can fill patient details and register successfully")
@@ -63,40 +61,16 @@ public class TC404_Register extends BaseGUITest {
         registerPage.enterName("John", "Doe");
         LOGGER.info("Name and Surname entered");
 
-        registerPage.clickNext();
-        LOGGER.info("Next button clicked");
-
-        registerPage.selectGender("Male");
+        registerPage.selectGender();
         LOGGER.info("Gender selected");
 
-        registerPage.clickNext();
-        LOGGER.info("Next button clicked");
+        registerPage.clickBirthdayNo();
+        LOGGER.info("No selected");
 
-        registerPage.enterAge("20");
+        registerPage.enterAge("240");
         LOGGER.info("Age entered");
 
-        registerPage.clickNext();
-        LOGGER.info("Next button clicked");
-
-        registerPage.enterAddress("Main St");
-        LOGGER.info("Contact info entered");
-
-        registerPage.clickNext();
-        LOGGER.info("Next button clicked");
-
-        registerPage.enterPhoneNumber("11111");
-        LOGGER.info("Phone number entered");
-
-        registerPage.clickNext();
-        LOGGER.info("Next button clicked");
-
-        registerPage.selectRelationship("Parent");
-        LOGGER.info("Relationship data entered");
-
-        registerPage.clickNext();
-        LOGGER.info("Next button clicked");
-
-        registerPage.clickConfirmButton();
+        registerPage.clickRegisterButton();
         LOGGER.info("Confirm button clicked");
 
         patientPage.verifyPatientPage();

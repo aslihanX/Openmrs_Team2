@@ -2,7 +2,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.*;
 
-public class TC405_My_Account extends BaseGUITest{
+public class TC405_My_Account extends BaseGUITest {
 
     private HomePage homePage;
     private LoginPage loginPage;
@@ -20,53 +20,34 @@ public class TC405_My_Account extends BaseGUITest{
         loginPage = new LoginPage(driver);
         demoPage = new DemoPage(driver);
         menuPage = new MenuPage(driver);
+        myAccountPage = new MyAccountPage(driver);
     }
-        @Test(priority = 1, description = "Verify that home page is visible successfully")
-        public void verifyHomePage() {
-            homePage.verifyPage();
-            LOGGER.info("Home page opened");
-        }
 
-        @Test(priority = 2, description = "Verify that the demo page is visible")
-        public void openDemoPage() {
+    @Test(priority = 1, description = "Verify user can login successfully before test")
+    public void loginBeforeTest() {
+        homePage.verifyPage();
+        LOGGER.info("Home page opened");
+        homePage.clickDemoButton();
+        LOGGER.info("Demo button clicked");
+        demoPage.verifyDemoPage();
+        LOGGER.info("Demo page opened");
+        demoPage.clickExploreButton();
+        LOGGER.info("Explore button clicked");
+        demoPage.clickEnterDemoButton();
+        LOGGER.info("Enter demo button clicked");
+        loginPage.verifyLoginPage();
+        LOGGER.info("Login page opened");
+        loginPage.fillLoginForm(username, password);
+        LOGGER.info("Username and password entered");
+        loginPage.clickLoginButton();
+        LOGGER.info("Login button clicked");
+        menuPage.verifyAdminLogin();
+        LOGGER.info("Login successful");
+    }
 
-            homePage.clickDemoButton();
-            LOGGER.info("Demo button clicked");
-
-            demoPage.verifyDemoPage();
-            LOGGER.info("Demo page opened");
-
-            demoPage.clickExploreButton();
-            LOGGER.info("Explore button clicked");
-
-            demoPage.clickEnterDemoButton();
-            LOGGER.info("Enter demo button clicked");
-        }
-            @Test(priority = 3, description = "Verify that login page is visible")
-            public void loginPage() {
-                loginPage.verifyLoginPage();
-                LOGGER.info("Login page opened");
-
-                loginPage.sendKeysToElement(usernameInput);
-                LOGGER.info("Username entered");
-                loginPage.clickLoginButton();
-
-                loginPage.clickLocationButton();
-                LOGGER.info("Location button clicked");
-
-                loginPage.clickLoginButton();
-                LOGGER.info("Login button clicked");
-            }
-     @Test(priority = 4, description = "Verify successful login")
-    public void adminLogin() {
-         menuPage.verifyAdminLogin();
-         LOGGER.info("Login successful");
-     }
-
-     @Test(priority = 5, description = "Verify successful enter to my account")
-    public void myAccountPage(){
-        homePage.clickElement();
-
-
+    @Test(priority = 2, description = "Verify successful enter to my account")
+    public void myAccountPage() {
+        myAccountPage.clickMyAccountPage();
+        LOGGER.info("My Account menu opened");
     }
 }

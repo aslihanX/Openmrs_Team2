@@ -8,13 +8,13 @@ import org.testng.Assert;
 
 public class PatientPage extends BasePage {
 
-    @FindBy(css = "#coreapps-diagnosesList > div.info-header > h3")
-    private WebElement patientDiagnoses;
+    @FindBy(css = "div:nth-child(1) > div > a > span > span")
+    private WebElement patientSummary;
 
-    @FindBy(className = "PersonName-givenName")
+    @FindBy(css = "span[class='_3QvC113UMQvMOBhW+z79+Q==']")
     private WebElement patientName;
 
-    @FindBy(css = "#content > div.patient-header.row > div.identifiers.mt-2.col-12.col-sm-5.col-md-4 > div > span")
+    @FindBy(css = "span[class='_7O7gKi8oSk8dU4N7z9kfrQ==']")
     private WebElement patientId;
 
     public PatientPage(WebDriver driver) {
@@ -22,7 +22,7 @@ public class PatientPage extends BasePage {
     }
 
     public void verifyPatientPage() {
-        verifyDisplayed(patientDiagnoses, "DIAGNOSES");
+        verifyDisplayed(patientSummary, "Patient summary");
         LOGGER.info("Verify patient page is displayed");
     }
 

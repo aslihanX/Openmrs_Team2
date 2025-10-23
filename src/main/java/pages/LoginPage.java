@@ -18,7 +18,7 @@ public class LoginPage extends BasePage {
     @FindBy(id = "Inpatient Ward")
     private WebElement locationButton;
 
-    @FindBy(xpath = "//button[@class='-esm-login__login__continueButton___VnN+0 cds--btn cds--btn--primary']")
+    @FindBy(xpath = "//form/div/button")
     private WebElement loginButton;
 
     public LoginPage(final WebDriver driver) {
@@ -34,7 +34,6 @@ public class LoginPage extends BasePage {
         sendKeysToElement(usernameInput, username);
         LOGGER.info("Email entered");
         clickElement(loginButton);
-
         sendKeysToElement(passwordInput, password);
         LOGGER.info("Password entered");
     }
