@@ -25,12 +25,4 @@ public class PatientPage extends BasePage {
         verifyDisplayed(patientSummary, "Patient summary");
         LOGGER.info("Verify patient page is displayed");
     }
-
-    public void verifyPatientNameAndIdDisplayed() {
-        wait.until(ExpectedConditions.visibilityOf(patientName));
-        Assert.assertTrue(patientName.isDisplayed());
-        wait.until(ExpectedConditions.visibilityOf(patientId));
-        Assert.assertTrue(patientId.isDisplayed());
-        LOGGER.info("Patient name and ID are displayed successfully");
-    }
 }

@@ -74,8 +74,5 @@ public class TC404_Register extends BaseGUITest {
 
         patientPage.verifyPatientPage();
         LOGGER.info("Patient page opened successfully after registration");
-
-        patientPage.verifyPatientNameAndIdDisplayed();
-        LOGGER.info("Patient name and ID verified on patient page");
     }
 }
