@@ -24,7 +24,6 @@ public class TC404_Register extends BaseGUITest {
         patientPage = new PatientPage(driver);
     }
 
-
     @Test(priority = 1, description = "Verify user can login successfully before registration")
     public void loginBeforeRegister() {
         homePage.verifyPage();

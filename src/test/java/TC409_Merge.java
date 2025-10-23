@@ -43,8 +43,6 @@ public class TC409_Merge extends BaseGUITest {
         LOGGER.info("Login page opened");
         loginPage.fillLoginForm(username, password);
         LOGGER.info("Username and password entered");
-        loginPage.clickLocationButton();
-        LOGGER.info("Location button clicked");
         loginPage.clickLoginButton();
         LOGGER.info("Login button clicked");
         menuPage.verifyAdminLogin();
